@@ -16,14 +16,14 @@ const App: React.FC<AppProps> = () => {
           <TaskCard
             type="p"
             title="Build website"
-            date="Jan 6"
-            assignee="John"
+            dueDate="Jan 6"
+            assigneeName="John"
           />
           <TaskCard
             type="p"
             title="Add blog"
-            date="Jan 10"
-            assignee="Ram"
+            dueDate="Jan 10"
+            assigneeName="Ram"
           />
           <h3 className="mt-4 w-40 h-6 border mb-4" >New task</h3>
         </div>
@@ -32,14 +32,14 @@ const App: React.FC<AppProps> = () => {
           <TaskCard
             type="d"
             title="Design the mockup"
-            date="Dec 31"
-            assignee="Rohit"
+            completedAtDate="Dec 31"
+            assigneeName="Rohit"
           />
           <TaskCard
             type="d"
             title="Get approval"
-            date="Dec 29"
-            assignee="Rahul"
+            completedAtDate="Dec 29"
+            assigneeName="Rahul"
           />
         </div>
       </div>

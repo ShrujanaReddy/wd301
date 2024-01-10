@@ -11,7 +11,7 @@ interface TaskCardProps {
 
 const TaskCard: React.FC<TaskCardProps> = ({ type, dueDate, completedAtDate, title, assigneeName }) => {
   let displayDate = '';
-  if (type === 'd' && completedAtDate) {
+  if (completedAtDate) {
     displayDate = `Completed on: ${completedAtDate}`;
   } else if (dueDate) {
     displayDate = `Due on: ${dueDate}`;

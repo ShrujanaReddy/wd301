@@ -11,7 +11,7 @@ class TaskList extends React.Component<Props> {
     return (
       <div>
         {this.props.tasks.map((task, idx) => (
-          <div key={idx} className="TaskItem" id="TaskItem">
+          <div key={idx} className="TaskItem">
             <Task title={task.title} description={task.description} dueDate={task.dueDate} />
           </div>
         ))}

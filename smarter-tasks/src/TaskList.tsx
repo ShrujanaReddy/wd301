@@ -11,8 +11,9 @@ interface Props {
 class TaskList extends React.Component<Props> {
   render() {
     return (
-      <div>
-        {this.props.tasks.map((task, idx) => (
+    <div>
+      {Array.isArray(this.props.tasks) &&
+        this.props.tasks.map((task, idx) => (
           <div key={idx} className="TaskItem">
             <Task
               title={task.title}
@@ -20,14 +21,14 @@ class TaskList extends React.Component<Props> {
               dueDate={task.dueDate}
             />
             <button
-              className="deleteTaskButton"
+              className="deleteTaskButton" id="deleteTaskButton"
               onClick={() => this.props.deleteTask(idx)}
             >
               Delete
             </button>
           </div>
         ))}
-      </div>
+    </div>
     );
   }
 }

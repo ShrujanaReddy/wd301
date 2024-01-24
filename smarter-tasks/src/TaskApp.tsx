@@ -7,20 +7,45 @@ interface TaskAppProp {}
 interface TaskAppState {
   tasks: TaskItem[];
 }
+
 class TaskApp extends React.Component<TaskAppProp, TaskAppState> {
   constructor(props: TaskAppProp) {
     super(props);
+    const storedTasks = localStorage.getItem("tasks");
     this.state = {
-      tasks: [],
+      tasks: storedTasks ? JSON.parse(storedTasks) : [],
+    };
+    const initialTasks = storedTasks ? JSON.parse(storedTasks) : [];
+    
+    // Ensure that tasks is always initialized as an array
+    this.state = {
+      tasks: Array.isArray(initialTasks) ? initialTasks : [],
     };
   }
-  addTask = (task: TaskItem) => { 
-  this.setState((state) => {
-    return {
-      tasks: [...state.tasks, task],
-    };
-  });
-};
+
+  addTask = (task: TaskItem) => {
+    this.setState(
+      (state) => ({
+        tasks: [...state.tasks, task],
+      }),
+      () => {
+        // Update localStorage after state has been updated
+        localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
+      }
+    );
+  };
+
+  deleteTask = (index: number) => {
+    this.setState(
+      (state) => ({
+        tasks: state.tasks.filter((_, i) => i !== index),
+      }),
+      () => {
+        // Update localStorage after state has been updated
+        localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
+      }
+    );
+  };
 
   render() {
     return (
@@ -38,7 +63,7 @@ class TaskApp extends React.Component<TaskAppProp, TaskAppState> {
               Pending
             </h1>
             <TaskForm addTask={this.addTask} />
-            <TaskList tasks={this.state.tasks} />
+            <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask}/>
           </div>
         </div>
       </div>

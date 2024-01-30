@@ -10,7 +10,7 @@ import Signin from "./pages/Signin";
 import ProtectedRoute from "./ProtectedRoute";
 import Layout from "./Layout";
 import './App.css';
-import NotFoundPage from "./pages/NotFound";
+import NotFoundPage from "./pages/Notfound";
 
 const router = createBrowserRouter([
   {

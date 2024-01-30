@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NotFoundPage: React.FC = () => {
+const Notfound: React.FC = () => {
   return (
     <div>
       <h2>404 - Not Found</h2>
@@ -14,4 +14,4 @@ const NotFoundPage: React.FC = () => {
   );
 };
 
-export default NotFoundPage;
+export default Notfound;

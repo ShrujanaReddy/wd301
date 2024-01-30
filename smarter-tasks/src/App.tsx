@@ -8,9 +8,9 @@ import TaskListPage from "./pages/TaskListPage";
 import TaskDetailsPage from "./pages/TaskDetailsPage";
 import Signin from "./pages/Signin";
 import ProtectedRoute from "./ProtectedRoute";
-import Layout from "./components/Layout";
+import Layout from "./Layout";
 import './App.css';
-import NotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {

@@ -14,7 +14,7 @@ import NotFoundPage from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/", 
     element: <Navigate to="/signin" replace />,
   },
   {

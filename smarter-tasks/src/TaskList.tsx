@@ -1,5 +1,3 @@
-// TaskList.tsx
-import React from "react";
 import Task from "./Task";
 import { TaskItem } from "./types";
 
@@ -8,29 +6,17 @@ interface Props {
   deleteTask: (index: number) => void;
 }
 
-class TaskList extends React.Component<Props> {
-  render() {
-    return (
-    <div>
-      {Array.isArray(this.props.tasks) &&
-        this.props.tasks.map((task, idx) => (
-          <div key={idx} className="TaskItem">
-            <Task
-              title={task.title}
-              description={task.description}
-              dueDate={task.dueDate}
-            />
-            <button
-              className="deleteTaskButton" id="deleteTaskButton"
-              onClick={() => this.props.deleteTask(idx)}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-    </div>
-    );
-  }
-}
+const TaskList = ({ tasks, deleteTask }: Props) => {
+  const lists = (
+    <ul>
+      {tasks.map((task, index) => (
+        <li key={index}>
+          <Task item={task} removeTask={() => deleteTask(index)} />
+        </li>
+      ))}
+    </ul>
+  );
+  return <>{lists}</>;
+};
 
 export default TaskList;

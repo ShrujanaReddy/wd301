@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const handleSignout = () => {
+    const navigate = useNavigate();
+    localStorage.setItem("isAuthenticated", "false");
+    navigate('/signin');
+  };
   return (
     <nav className="bg-gray-800 py-4">
       <div className="mx-auto px-4">
@@ -15,7 +21,8 @@ const Header = () => {
             <h2 className="text-white text-lg font-bold">Smarter Tasks</h2>
           </div>
           <div className="flex items-center w-1/3 justify-end">
-            <a href="/signin" className="ml-6 text-gray-300 hover:text-white">
+            <a href="/signin" className="ml-6 text-gray-300 hover:text-white" 
+              onClick={handleSignout}>
              Signout
             </a>
          </div>

@@ -16,14 +16,12 @@ const TaskDetailsPage: React.FC = () => {
   const [task, setTask] = useState<TaskItem | undefined>();
 
   useEffect(() => {
-    // Assuming you have a mechanism to fetch tasks from localStorage or an API
     const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) {
       const parsedTasks = JSON.parse(storedTasks) as TaskItem[];
       setTaskAppState({ tasks: parsedTasks });
       setTask(parsedTasks.find((task) => task.id === id));
     } else {
-      // Handle the case where tasks are not yet available
       setTask(undefined);
     }
   }, []);

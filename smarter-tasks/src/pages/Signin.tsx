@@ -5,12 +5,12 @@ function Signin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  localStorage.setItem("authenticated", "false");
+  localStorage.setItem("isAuthenticated", "false");
 
   function handleSignin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (username === "admin" && password === "admin") {
-      localStorage.setItem("authenticated", "true");
+      localStorage.setItem("isAuthenticated", "true");
       navigate("/home");
     } else {
       alert("Invalid username or password");

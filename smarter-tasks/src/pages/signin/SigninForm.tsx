@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 // First we will import the API_ENDPOINT constant from the `config` folder
 import { API_ENDPOINT } from '../../config/constants';
+import { useNavigate } from 'react-router-dom';
 
 const SigninForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate=useNavigate();
   // Then we will define the handle submit function
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    console.log(JSON.stringify({ email, password }));
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
 
       if (!response.ok) {
@@ -23,8 +24,14 @@ const SigninForm: React.FC = () => {
 
       console.log('Sign-in successful');
       
-      // After successful signin we have to redirect the user to the secured page. We will do that later.
+      // Extract the response body as JSON data
+      const data = await response.json();
 
+      // After successful signin, first we will save the token in localStorage
+      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('userData', JSON.stringify(data.user));
+      // After successful signin we have to redirect the user to the secured page. We will do that later.
+      navigate('/dashboard');
     } catch (error) {
       console.error('Sign-in failed:', error);
     }

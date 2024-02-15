@@ -32,7 +32,7 @@ const SignupForm: React.FC = () => {
       console.log(data.token);
       localStorage.setItem('userData', JSON.stringify(data.user))
       // Dialogue: After successful signup we have to redirect the user to the secured page.
-      navigate('/dashboard');
+      navigate('/account');
     } catch (error) {
       console.error('Sign-up failed:', error);
     }

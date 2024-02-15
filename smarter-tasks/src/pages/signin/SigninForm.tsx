@@ -40,12 +40,12 @@ const SigninForm: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
-        <input type="email" {...register('email', { required: 'Email is required' })} className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue" />
+        <input id="email" type="email" {...register('email', { required: 'Email is required' })} className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue" />
         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Password:</label>
-        <input type="password" {...register('password', { required: 'Password is required' })} className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue" />
+        <input id="password" type="password" {...register('password', { required: 'Password is required' })} className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue" />
         {errors.password && <p className="text-red-500">{errors.password.message}</p>}
       </div>
       <button type="submit" className="w-full bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4">Sign In</button>

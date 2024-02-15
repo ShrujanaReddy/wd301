@@ -1,7 +1,6 @@
-import React from "react";
-
 // First, I'll import the useProjectsState custom hook to access projects state.
 import { useProjectsState } from "../../context/projects/context";
+
 export default function ProjectListItems() {
 
   // I'll define a new constant called `state`, to call the useProjectsState() hook, 

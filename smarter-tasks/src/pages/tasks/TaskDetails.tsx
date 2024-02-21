@@ -230,7 +230,7 @@ const TaskDetails = () => {
                       onSubmit={handleSubmit(onSubmitComment)}
                       className="mt-5"
                     >
-                      <h3 className="mb-3 font-serif text-xl font-semibold ">
+                      <h3 className="text-lg font-medium leading-6 text-gray-900 ">
                         Comment Details
                       </h3>
 
@@ -253,11 +253,11 @@ const TaskDetails = () => {
                     </form>
 
                     <div className="mt-2 space-y-4">
-                {commentsState.isLoading ? (
-                    <p>Loading comments...</p>
-                ) : commentsState.isError ? (
-                    <p>Error: {commentsState.errorMessage}</p>
-                ) : (
+                    {commentsState.isLoading ? (
+                        <p>Loading comments...</p>
+                    ) : commentsState.isError ? (
+                        <p>Error: {commentsState.errorMessage}</p>
+                    ) : (
                     <>
                     {commentsState.data.map((comment) => (
                         <div
@@ -266,7 +266,9 @@ const TaskDetails = () => {
                         >
                         <div className="flex justify-between items-center">
                             <p className="text-gray-600">
-                            <strong>{comment.User.name}</strong> -{" "}
+                            <strong>By: {comment.User.name}</strong> : {" "}
+                            </p>
+                            <p><strong>Time : </strong>
                             {new Date(comment.createdAt).toLocaleString()}
                             </p>
                         </div>

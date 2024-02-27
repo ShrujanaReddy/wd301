@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes"
 import { ThemeContext } from "./context/theme";
@@ -7,17 +7,21 @@ import { MembersProvider } from "./context/members/context";
 import { CommentProvider } from "./context/comment/context";
 
 const App = () => {
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   return (
-  <div className={`h-screen w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}>
-    <ProjectsProvider>
+    <div
+      className={`h-full w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}
+    >
+      <ProjectsProvider>
         <MembersProvider>
           <CommentProvider>
+            <Suspense fallback={<>Loading...</>}>
             <RouterProvider router={router} />
+          </Suspense>
           </CommentProvider>
         </MembersProvider>
-    </ProjectsProvider>
-  </div>
-)
-}
+      </ProjectsProvider>
+    </div>
+  );
+};
 export default App;

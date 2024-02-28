@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { fetchMembers } from "../../context/members/actions";
 import { useMembersDispatch } from "../../context/members/context";
-import MemberListItems from './MemberListItems';
+import ErrorBoundary from '../../components/ErrorBoundary';
+const MemberListItems = React.lazy(() => import("./MemberListItems"));
 
 const MemberList: React.FC = () => {
   const dispatch = useMembersDispatch();
@@ -14,7 +15,11 @@ const MemberList: React.FC = () => {
     <div className="grid gap-4 grid-cols-4 mt-5">
       {/*To keep this file clean, I'll move all the logic to access the members 
        from our app-state, to a new component MemberListItems */}
-      <MemberListItems />
+      <ErrorBoundary>
+        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+          <MemberListItems />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

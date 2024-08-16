@@ -3,6 +3,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { addMembers, fetchMembers } from "../../context/members/actions";
 import { useMembersDispatch } from "../../context/members/context";
+import { useTranslation } from "react-i18next"; 
+
 
 type Inputs = {
   name: string;
@@ -14,7 +16,7 @@ const NewMember = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const dispatchMembers = useMembersDispatch();
-
+  const { t } = useTranslation("common"); 
   const {
     register,
     handleSubmit,
@@ -57,7 +59,7 @@ const NewMember = () => {
         onClick={openModal}
         className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
-        Add User
+        {t("Add User")}
       </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={closeModal}>

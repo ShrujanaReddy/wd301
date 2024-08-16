@@ -7,11 +7,13 @@ type Inputs = {
   email: string;
   password: string;
 };
+import { useTranslation } from "react-i18next"; 
+
 
 const SigninForm: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
   const navigate = useNavigate();
-
+  const { t } = useTranslation("common"); 
   const onSubmit = async (data: Inputs) => {
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
@@ -39,12 +41,12 @@ const SigninForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label className="block text-gray-700 font-semibold mb-2">Email:</label>
+        <label className="block text-gray-700 font-semibold mb-2">{t("Email")}:</label>
         <input id="email" type="email" {...register('email', { required: 'Email is required' })} className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue" />
         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </div>
       <div>
-        <label className="block text-gray-700 font-semibold mb-2">Password:</label>
+        <label className="block text-gray-700 font-semibold mb-2">{t("Password")}:</label>
         <input id="password" type="password" {...register('password', { required: 'Password is required' })} className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue" />
         {errors.password && <p className="text-red-500">{errors.password.message}</p>}
       </div>

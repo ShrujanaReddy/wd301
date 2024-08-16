@@ -5,12 +5,14 @@ import {
   useMembersState,
   useMembersDispatch,
 } from "../../context/members/context";
+import { useTranslation } from "react-i18next"; 
+
 
 export default function MemberListItems() {
   const dispatchMembers = useMembersDispatch();
   const state = useMembersState();
   const { members, isLoading, isError, errorMessage } = state || {};
-
+  const { t } = useTranslation("common"); 
   if (!members) {
     return <span>Loading...</span>;
   }
@@ -45,10 +47,10 @@ export default function MemberListItems() {
           className={`member block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
         >
          <h5 className="mb-2 text-x font-medium tracking-tight text-gray-500 dark:text-white">
-            Email: {member.email}
+            {t("Email")}: {member.email}
           </h5>
           <h5 className="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-            Name: {member.name}
+            {t("Name")}: {member.name}
           </h5>
           <button
             type="button"

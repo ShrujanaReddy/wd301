@@ -5,14 +5,16 @@ import { ThemeContext } from "./context/theme";
 import {ProjectsProvider} from "./context/projects/context"
 import { MembersProvider } from "./context/members/context";
 import { CommentProvider } from "./context/comment/context";
+import './i18n'
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
   return (
     <div
-      className={`h-full w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}
+      className={`w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}
     >
-      <ProjectsProvider>
+      <div className="w-full">
+        <ProjectsProvider>
         <MembersProvider>
           <CommentProvider>
             <Suspense fallback={<>Loading...</>}>
@@ -21,6 +23,8 @@ const App = () => {
           </CommentProvider>
         </MembersProvider>
       </ProjectsProvider>
+      </div>
+      
     </div>
   );
 };

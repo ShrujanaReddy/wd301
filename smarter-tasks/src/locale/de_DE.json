@@ -1,0 +1,21 @@
+{
+    "common" : {
+    "Add User": "Benutzer hinzufügen",
+    "Done": "Erledigt",
+    "Email": "E-Mail",
+    "In progress": "In Bearbeitung",
+    "Members": "Mitglieder",
+    "Name": "Name",
+    "New Task": "Neue Aufgabe",
+    "New project": "Neues Projekt",
+    "New Project": "Neues Projekt",
+    "Password": "Passwort",
+    "Pending": "Ausstehend",
+    "Profile": "Profil",
+    "Projects": "Projekte",
+    "Sign in": "Anmelden",
+    "Sign out": "Abmelden",
+    "Smarter Tasks": "Intelligente Aufgaben"
+    }
+    
+}

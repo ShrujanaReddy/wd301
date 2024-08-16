@@ -2,6 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINT } from '../../config/constants';
+import { useTranslation } from "react-i18next"; 
+
 
 type Inputs = {
   organisationName: string;
@@ -13,7 +15,7 @@ type Inputs = {
 const SignupForm: React.FC = () => {
   const { register, handleSubmit } = useForm<Inputs>();
   const navigate = useNavigate();
-
+  const { t } = useTranslation("common"); 
   const onSubmit = async (data: Inputs) => {
   try {
     const response = await fetch(`${API_ENDPOINT}/organisations`, {
@@ -84,7 +86,7 @@ const SignupForm: React.FC = () => {
         type="submit"
         className="w-full bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4"
       >
-        Sign up
+        {t("Sign up")}
       </button>
     </form>
   );

@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 // First I'll import the addProject function
 import { addProject } from '../../context/projects/actions';
+import { useTranslation } from "react-i18next"; 
+
 
 // Then I'll import the useProjectsDispatch hook from projects context
 import { useProjectsDispatch } from "../../context/projects/context";
@@ -12,7 +14,7 @@ type Inputs = {
 };
 const NewProject = () => {
   const [isOpen, setIsOpen] = useState(false)
-
+  const { t } = useTranslation("common"); 
   // Next, I'll add a new state to handle errors.
   const [error, setError] = useState(null)
 
@@ -51,7 +53,7 @@ const NewProject = () => {
         id='newProjectBtn'
         className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
-        New Project
+        {t("New Project")}
       </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>

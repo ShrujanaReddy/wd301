@@ -1,0 +1,21 @@
+{
+    "common" : {
+    "Add User": "Add User",
+    "Done": "Done",
+    "Email": "Email",
+    "In progress": "In progress",
+    "Members": "Members",
+    "Name": "Name",
+    "New Task": "New Task",
+    "New project": "New project",
+    "New Project": "New Project",
+    "Password": "Password",
+    "Pending": "Pending",
+    "Profile": "Profile",
+    "Projects": "Projects",
+    "Sign in": "Sign in",
+    "Sign out": "Sign out",
+    "Smarter Tasks": "Smarter Tasks"
+    }
+    
+}

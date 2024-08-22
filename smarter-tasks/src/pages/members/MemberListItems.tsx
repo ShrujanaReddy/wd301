@@ -12,10 +12,14 @@ export default function MemberListItems() {
   const dispatchMembers = useMembersDispatch();
   const state = useMembersState();
   const { members, isLoading, isError, errorMessage } = state || {};
+  console.log('Members:', members);
+  console.log('Is Loading:', isLoading);
+  console.log('Is Error:', isError, 'Error Message:', errorMessage);
   const { t } = useTranslation("common"); 
   if (!members) {
     return <span>Loading...</span>;
   }
+  
 
   const handleDelete = async (id: number) => {
     try {
@@ -38,7 +42,7 @@ export default function MemberListItems() {
   if (isError) {
     return <span>{errorMessage}</span>;
   }
-
+  
   return (
     <>
       {members.map((member: any) => (

@@ -24,7 +24,11 @@ const App = () => {
         </MembersProvider>
       </ProjectsProvider>
       </div>
-      
+      <div>
+      <button onClick={() => { throw new Error("Test Sentry Error") }}>
+        Trigger Error
+      </button>
+    </div>
     </div>
   );
 };

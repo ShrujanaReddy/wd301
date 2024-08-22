@@ -14,7 +14,7 @@ const Members = () => {
         <NewMember />
       </div>
       <ErrorBoundary>
-        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+        <Suspense>
           <MemberList />
         </Suspense>
       </ErrorBoundary>
